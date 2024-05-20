@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from . import models
 
 def index(request):
@@ -7,3 +7,9 @@ def index(request):
 
 def aboutme(request):
     return render(request, 'aboutme.html')
+
+def complete(request,id):
+    item=models.TodoItem.objects.get(pk=id)
+    item.status = True
+    item.save()
+    return redirect('index')
