@@ -1,0 +1,21 @@
+{% load static %}
+<html>
+    <head>
+        <style>
+        .status_done{
+            background-color: darkgray;
+        }
+    </style>
+    </head>
+    <body>
+        <img src="{% static 'images/hovercode.png' %}" height=30px>
+        {% for i in items %}
+        <h3>Title : {{ i.title }}</h3>
+        <ul {% if i.status == True %} class="status_done" {% endif %}>
+            <li>Description: {{ i.description }}</li>
+            <li>Date : {{ i.created_at }}</li>
+            <li>Status : {{ i.status }}</li>
+        </ul>
+        {% endfor %}
+    </body>
+</html>
