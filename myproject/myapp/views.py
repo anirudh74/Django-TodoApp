@@ -13,3 +13,8 @@ def complete(request,id):
     item.status = True
     item.save()
     return redirect('index')
+
+def delete(request,id):
+    item=models.TodoItem.objects.get(pk=id)
+    item.delete()
+    return redirect('index')
